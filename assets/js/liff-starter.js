@@ -1,10 +1,11 @@
-window.onload(function() {
+window.onload = function() {
     const useNodes = false;
     const defaultLiffID = "1656428083-4QPqwQb2";
 
     let myLiffID = "";
-    
-    if (useNodeJS) {
+    console.log('tseting');
+
+    if (useNodes) {
         fetch('/send-id')
             .then(function(reqResponse) {
                 return reqResponse.json();
@@ -18,10 +19,11 @@ window.onload(function() {
                 document.getElementById("nodeLiffIdErrorMessage").classList.remove('hidden');
             });
     } else {
-        myLiffId = defaultLiffId;
+        console.log('tseting');
+        myLiffId = defaultLiffID;
         initializeLiffOrDie(myLiffId);
     }
-});
+};
 
 function initializeLiffOrDie(myLiffId) {
     if (!myLiffId) {
@@ -109,6 +111,8 @@ function registerButtonHandlers() {
         if (!liff.isLoggedIn()) {
             liff.login();
         }
+
+        console.log('testing');
     });
 
     document.getElementById('liffLogoutButton').addEventListener('click', function() {
